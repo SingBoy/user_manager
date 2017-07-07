@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.net.ibingo.core.dao.UserDao" >
+  <resultMap id="BaseResultMap" type="cn.net.ibingo.core.model.User" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="pass_word" property="passWord" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="birth_date" property="birthDate" jdbcType="TIMESTAMP" />
+    <result column="country" property="country" jdbcType="VARCHAR" />
+    <result column="image_url" property="imageUrl" jdbcType="VARCHAR" />
+    <result column="caller_type" property="callerType" jdbcType="VARCHAR" />
+    <result column="soft_name" property="softName" jdbcType="VARCHAR" />
+    <result column="imsi" property="imsi" jdbcType="VARCHAR" />
+    <result column="device_no" property="deviceNo" jdbcType="VARCHAR" />
+    <result column="imei" property="imei" jdbcType="VARCHAR" />
+    <result column="user_name_type" property="userNameType" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_name,user_id, nick_name, sex,birth_date,country,image_url
+  </sql>
+  <select id="findUserByUserName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select <include refid="Base_Column_List"/>
+    from t_user
+    where user_name = #{userName,jdbcType=VARCHAR}
+  </select>
+
+  <select id="findUserByUserId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select user_name,pass_word,user_id, nick_name, sex,birth_date,country,image_url
+    from t_user
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </select>
+
+
+  <select id="findUserByNameAndPass" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select user_name,pass_word,user_id, nick_name, sex,birth_date,country,image_url
+    from t_user
+    where user_name = #{userName,jdbcType=VARCHAR} and pass_word = #{passWord,jdbcType=VARCHAR}
+  </select>
+
+
+  <insert id="insertUser" parameterType="cn.net.ibingo.core.model.User" >
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+        user_name,
+        pass_word,
+        user_id,
+        user_name_type,
+      <if test="nickName != null" >
+        nick_name,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="birthDate != null" >
+        birth_date,
+      </if>
+      <if test="country != null" >
+        country,
+      </if>
+      <if test="imageUrl != null" >
+        image_url,
+      </if>
+      <if test="callerType != null" >
+        caller_type,
+      </if>
+      <if test="softName != null" >
+        soft_name,
+      </if>
+      <if test="imsi != null" >
+        imsi,
+      </if>
+      <if test="deviceNo != null" >
+        device_no,
+      </if>
+      <if test="imei != null" >
+        imei,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{userName,jdbcType=VARCHAR},
+      #{passWord,jdbcType=VARCHAR},
+      #{userId,jdbcType=VARCHAR},
+      #{userNameType,jdbcType=VARCHAR},
+      <if test="nickName != null" >
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthDate != null" >
+        #{birthDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null" >
+        #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="callerType != null" >
+        #{callerType,jdbcType=VARCHAR},
+      </if>
+      <if test="softName != null" >
+        #{softName,jdbcType=VARCHAR},
+      </if>
+      <if test="imsi != null" >
+        #{imsi,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceNo != null" >
+        #{deviceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="imei != null" >
+        #{imei,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateUserInfo" parameterType="cn.net.ibingo.core.model.User" >
+    update t_user
+    <set >
+      <if test="nickName != null" >
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex =  #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthDate != null" >
+        birth_date = #{birthDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="country != null" >
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null" >
+        image_url = #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="callerType != null" >
+        caller_type = #{callerType,jdbcType=VARCHAR},
+      </if>
+      <if test="softName != null" >
+        soft_name = #{softName,jdbcType=VARCHAR},
+      </if>
+      <if test="imsi != null" >
+        imsi = #{imsi,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceNo != null" >
+        device_no = #{deviceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="imei != null" >
+        imei = #{imei,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_name = #{userName,jdbcType=VARCHAR}
+  </update>
+
+  <update id="updatePasswordByUserName" parameterType="cn.net.ibingo.core.model.User" >
+    update t_user
+    <set >
+        pass_word = #{passWord,jdbcType=VARCHAR},
+    </set>
+    where user_name = #{userName,jdbcType=VARCHAR}
+  </update>
+
+
+</mapper>
