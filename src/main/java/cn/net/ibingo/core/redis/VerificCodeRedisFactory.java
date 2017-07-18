@@ -38,7 +38,6 @@ public class VerificCodeRedisFactory extends RedisGenerator<String,String> {
 				return connection.setNX(key,value);
 			}
 		});
-
 		return result;
 	}
 

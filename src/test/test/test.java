@@ -1,4 +1,4 @@
-package advert_manager;
+package test;
 
 
 import java.io.*;

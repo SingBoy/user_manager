@@ -1,11 +1,12 @@
 package cn.net.ibingo.common.utils;
 
 import cn.net.ibingo.common.utils.PropertiesUtil;
+import org.apache.commons.lang.StringUtils;
 
 /**
- * @author YuanLian
+ * @author yuxiangjie
  */
-public class ConstantConfig {
+public final class ConstantConfig {
 
     /**
      * 接口返回参数状态码
@@ -67,35 +68,44 @@ public class ConstantConfig {
     /**
      * 用户头像的大小
      */
-    public static int IMAGE_SIZE = 0;
+    public static Integer IMAGE_SIZE = null;
+
+    public static String AWS_ACCESS_KEY="";
+    public static String AWS_SECRET_KEY="";
+    public static String BUCKETNAME="";
 
     static {
         EMAIL_HOST = PropertiesUtil.getInstance().getvalue("email_host");
         EMAIL_USERNAME = PropertiesUtil.getInstance().getvalue("email_username");
         EMAIL_PASSWORD = PropertiesUtil.getInstance().getvalue("email_password");
         EMAIL_SUBJECT = PropertiesUtil.getInstance().getvalue("email_subject");
-        EMAIL_MESSAGE = PropertiesUtil.getInstance().getvalue("email_message");
+        EMAIL_MESSAGE = PropertiesUtil.getInstance().getvalue("email_message");//这是您的验证码，验证码有效时间为5分钟
         GAME_CENTER_URL = PropertiesUtil.getInstance().getvalue("game_center_url");
-        IMAGE_SIZE = Integer.parseInt(PropertiesUtil.getInstance().getvalue("image_size"));
+        String imageSize = PropertiesUtil.getInstance().getvalue("image_size");
+        IMAGE_SIZE = Integer.parseInt(!StringUtils.isEmpty(imageSize)?imageSize: "0");
+        AWS_ACCESS_KEY = PropertiesUtil.getInstance().getvalue("aws_access_key");
+        AWS_SECRET_KEY = PropertiesUtil.getInstance().getvalue("aws_secret_key");
+        BUCKETNAME = PropertiesUtil.getInstance().getvalue("bucketName");
+
     }
 
-    public static int VERIFIC_CODE_EXPIRE = 300;//验证码失效时间（秒）
+    public static final int VERIFIC_CODE_EXPIRE = 300;//验证码失效时间（秒）
 
 
     /**
      * 登录方式
      */
-    public static int LOGIN_COMMON = 0;//普通登录方式
-    public static int LOGIN_THIRD = 1;//第三方登录
+    public static final int LOGIN_COMMON = 0;//普通登录方式
+    public static final int LOGIN_THIRD = 1;//第三方登录
 
 
     /**
      * 账号类型
      */
-    public static int USERNAME_MOBILE = 0;//手机账号
-    public static int USENAME_EMAIL = 1;//邮箱账号
-    public static int USENAME_THIRD = 2;//第三方登录账号
+    public static final int USERNAME_MOBILE = 0;//手机账号
+    public static final int USENAME_EMAIL = 1;//邮箱账号
+    public static final int USENAME_THIRD = 2;//第三方登录账号
 
 
-    public final static String IMAGESPATH ="/home/ibingo/docker/advert-service";
+    public static final String IMAGESPATH ="/home/ibingo/docker/advert-service";
 }

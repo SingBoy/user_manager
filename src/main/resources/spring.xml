@@ -79,7 +79,7 @@
 	<!-- 注解方式配置事物 -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
 	
-   	<mvc:interceptors>
+   <!--	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/welcome/**"/>
 			<mvc:mapping path="/user/**"/>
@@ -92,7 +92,7 @@
 
 			<bean class="cn.net.ibingo.common.interceptor.AuthInterceptor" />
 		</mvc:interceptor>
-	</mvc:interceptors>
+	</mvc:interceptors>-->
 
 	<task:annotation-driven scheduler="qbScheduler" mode="proxy"/>
 	<task:scheduler id="qbScheduler" pool-size="10"/>

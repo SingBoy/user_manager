@@ -19,7 +19,7 @@ public class User {
 
     private String nickName;//昵称
 
-    private int sex;//性别
+    private Integer sex;//性别
 
     private Date birthDate;//出生日期
 
@@ -37,9 +37,11 @@ public class User {
 
     private String imei;//imei 设备序列号
 
-    private int userNameType;//账号类型0:手机账号，1:邮箱账号，2:第三方登录账号
+    private Integer userNameType;//账号类型0:手机账号，1:邮箱账号，2:第三方登录账号
 
     private Date createDate;
+
+    private String verificCode;
 
     public int getId() {
         return id;
@@ -81,11 +83,11 @@ public class User {
         this.nickName = nickName;
     }
 
-    public int getSex() {
+    public Integer getSex() {
         return sex;
     }
 
-    public void setSex(int sex) {
+    public void setSex(Integer sex) {
         this.sex = sex;
     }
 
@@ -153,11 +155,11 @@ public class User {
         this.imei = imei;
     }
 
-    public int getUserNameType() {
+    public Integer getUserNameType() {
         return userNameType;
     }
 
-    public void setUserNameType(int userNameType) {
+    public void setUserNameType(Integer userNameType) {
         this.userNameType = userNameType;
     }
 
@@ -167,5 +169,13 @@ public class User {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    public String getVerificCode() {
+        return verificCode;
+    }
+
+    public void setVerificCode(String verificCode) {
+        this.verificCode = verificCode;
     }
 }

@@ -51,7 +51,7 @@ public class FileUtil {
      * @param response
      * @return
      */
-    public static void imageDownload(HttpServletRequest request, HttpServletResponse response) {
+    public static void imageDownload(String fileName,HttpServletRequest request, HttpServletResponse response) {
         InputStream is = null;
         OutputStream os = null;
         //1.获取需要下载的文件
@@ -61,7 +61,7 @@ public class FileUtil {
                 mkdirFile.mkdirs();
             }
             //处理中文乱码
-            String fileName = URLDecoder.decode(request.getParameter("userName"), "UTF-8");
+            fileName = URLDecoder.decode(fileName, "UTF-8");
             String imageNamePath = "C://Users/lqj/Desktop/windows_amd64" + File.separator + fileName+".png";//ConstantConfig.IMAGESPATH + File.separator + fileName + ".jpg";
 
             File file = new File(imageNamePath);

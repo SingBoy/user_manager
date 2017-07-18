@@ -8,7 +8,7 @@
     <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
   </resultMap>
 
-  <insert id="insertUser" parameterType="cn.net.ibingo.core.model.LoginLog" >
+  <insert id="insertLoginLog" parameterType="cn.net.ibingo.core.model.LoginLog" >
     insert into t_login_log (user_name,login_type,create_date) VALUES (#{userName,jdbcType=VARCHAR}, #{loginType,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP})
   </insert>
 

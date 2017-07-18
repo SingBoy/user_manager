@@ -13,7 +13,7 @@ public class LoginLog {
 
     private Date createDate;
 
-    private int loginType;
+    private Integer loginType;
 
     public int getId() {
         return id;
@@ -39,11 +39,11 @@ public class LoginLog {
         this.createDate = createDate;
     }
 
-    public int getLoginType() {
+    public Integer getLoginType() {
         return loginType;
     }
 
-    public void setLoginType(int loginType) {
+    public void setLoginType(Integer loginType) {
         this.loginType = loginType;
     }
 }
