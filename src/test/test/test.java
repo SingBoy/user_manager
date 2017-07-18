@@ -29,8 +29,14 @@ public class test {
 	private static String token = "";
 	
 	public static void main(String[] main){
-		downloadFile("D://test","abc");
+		testVoluum();
 	}
+	public static void testVoluum() {
+		Map<String,Object> params = new HashMap<>();
+		params.
+		HttpRespons sr = httpUtil.sendPost("http://localhost:9090/voluum/notify", params, null);
+	}
+
 	public static File downloadFile1(String p,String name) {
 		String urlStr="http://yxj.ngrok.cc/user_manager/account/downloadImage";
 		String path= p;
